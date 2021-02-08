@@ -16,8 +16,11 @@ const db = require('../db/db').promise();
 // })
 /* GET home page. */
 router.get('/', async function(req, res, next) {
-  let name = req.query.name;
+  let name = req.query.name
+      .catch((err) => console.log(err));
+
   console.log(name);
+
   let result1 = await db.query('SELECT student_id FROM studentid WHERE student_name=?',[name])
       .catch((err)=>console.log(err));
   console.log(result1[0][0].student_id);
