@@ -18,13 +18,14 @@ const db = require('../db/db').promise();
 /* GET home page. */
 router.post('/', async function(req, res, next) {
   name = req.body.name;
+  console.log(name);
   let result1 = await db.query('SELECT student_id FROM studentid WHERE student_name=?',[name])
       .catch((err)=>console.log(err));
-  console.log(result1);
+  console.log(result1[0][0].student_id);
 
   // console.log(result1[0])
   // console.log("hi")
-  res.send(result1[0][0].student_id);
+  res.send(result1[0][0].student_id).catch((err)=> console.log(err));
   res.render('index', { title: result1[0][0].student_id });
 
 });
