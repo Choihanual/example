@@ -16,28 +16,27 @@ const db = require('../db/db').promise();
 // })
 /* GET home page. */
 router.get('/', async function(req, res, next) {
-  try {
-    let name = await req.query.name
-        .catch((err) => console.log(err));
-
-
-    console.log(name);
-
-    // let result1 = await db.query('SELECT student_id FROM studentid WHERE student_name=?', [name])
+    //
+    // let name = await req.query.name
     //     .catch((err) => console.log(err));
+    //
+    //
+    // console.log(name);
+    //
+    // // let result1 = await db.query('SELECT student_id FROM studentid WHERE student_name=?', [name])
+    // //     .catch((err) => console.log(err));
+    // // console.log(result1[0][0].student_id);
+    //
+    // let result1 = await db.query('SELECT student_id FROM studentid WHERE student_name="최한얼"')
+    //     .catch((err) => console.log(err));
+    //
     // console.log(result1[0][0].student_id);
+    //
+    // res.send(result1[0][0].student_id)
+    //     .catch((err) => console.log(err));
+  console.log(req.query);
 
-    let result1 = await db.query('SELECT student_id FROM studentid WHERE student_name="최한얼"')
-        .catch((err) => console.log(err));
 
-    console.log(result1[0][0].student_id);
-
-    res.send(result1[0][0].student_id)
-        .catch((err) => console.log(err));
-
-  } catch(err) {
-    console.log("err: " + err);
-  }
 
 
 });
