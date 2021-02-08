@@ -23,7 +23,9 @@ router.get('/', async function(req, res, next) {
         .catch((err) => console.log(err));
 
     console.log(result1[0][0].student_id);
-    res.send(result1[0][0].student_id);
+    res.send({
+      data:result1[0][0].student_id
+    });
 
 
 
