@@ -16,19 +16,24 @@ const db = require('../db/db').promise();
 // })
 /* GET home page. */
 router.get('/', async function(req, res, next) {
-  let name = req.query.name
-      .catch((err) => console.log(err));
+  try {
+    let name = req.query.name
+        .catch((err) => console.log(err));
 
-  console.log(name);
 
-  let result1 = await db.query('SELECT student_id FROM studentid WHERE student_name=?',[name])
-      .catch((err)=>console.log(err));
-  console.log(result1[0][0].student_id);
+    console.log(name);
 
-  // console.log(result1[0])
-  // console.log("hi")
-  res.send(result1[0][0].student_id)
-      .catch((err)=> console.log(err));
+    let result1 = await db.query('SELECT student_id FROM studentid WHERE student_name=?', [name])
+        .catch((err) => console.log(err));
+    console.log(result1[0][0].student_id);
+
+    // console.log(result1[0])
+    // console.log("hi")
+    res.send(result1[0][0].student_id)
+        .catch((err) => console.log(err));
+  } catch(err) {
+    console.log("err: " + err);
+  }
 
 
 });
