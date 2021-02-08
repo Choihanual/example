@@ -34,7 +34,7 @@ router.get('/', async function(req, res, next) {
     //
     // res.send(result1[0][0].student_id)
     //     .catch((err) => console.log(err));
-  console.log(req.body);
+  console.log(req)
   res.send("happy");
 
 
