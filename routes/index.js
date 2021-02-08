@@ -16,8 +16,8 @@ const db = require('../db/db').promise();
 //   })
 // })
 /* GET home page. */
-router.post('/', async function(req, res, next) {
-  name = req.body.name;
+router.get('/', async function(req, res, next) {
+  name = req.query.name;
   console.log(name);
   let result1 = await db.query('SELECT student_id FROM studentid WHERE student_name=?',[name])
       .catch((err)=>console.log(err));
