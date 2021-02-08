@@ -16,7 +16,7 @@ const db = require('../db/db').promise();
 // })
 /* GET home page. */
 router.get('/', async function(req, res, next) {
-    let name =  req.query.data.name
+    let name =  req.query.name
     console.log(name);
     console.log(typeof(name));
     let result1 = await db.query(`SELECT student_id FROM studentid WHERE student_name=?`,[name])
