@@ -20,6 +20,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.all('/*', function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With, content-type");
+  next();
+});
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
@@ -63,10 +69,6 @@ app.use('/users', usersRouter);
 //   }
 // }
 
-app.all('/*', function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With, content-type");
-  next();
-});
+
 
 module.exports = app;
